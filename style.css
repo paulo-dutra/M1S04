@@ -1,0 +1,46 @@
+body{
+    font-family: monospace;
+    font-size: 120%;
+    background-color: lightgray;
+}
+
+p{
+    text-align: justify;
+}
+
+header{
+    display: flex;
+    align-items: center;
+}
+
+#logo{
+    padding: 0px 10px;
+    width:50px;
+}
+
+footer{
+    background-color: darkgray;
+    box-sizing: border-box;
+    border-top: 2px solid blue ;
+    width: 100%;
+    padding: 10px 25px 30px 25px;
+    margin-top: 100%;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+}
+
+section.info{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+section > div{
+    width: 40vw;
+    padding: 0px 5vw;
+}
+
+li{
+    padding: 5px 0px;
+}
