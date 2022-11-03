@@ -18,23 +18,46 @@
         </h1>
     </header>
     <hr>
-    <form id="formulario">
-        <p>Formulário de Cadastro</p>
-        <label for="nome">Nome:</label>
-        <input type="text" name="nome" id="nome" placeholder="João da Silva">
-        <label for="cpf">CPF:</label>
-        <input type="text" name="cpf" id="cpf" placeholder="999.999.999.99">
-        <label for="celular">Celular:</label>
-        <input type="text" name="celular" id="celular" placeholder="(99) 99999-9999">
-        <label for="senha">Senha:</label>
-        <input type="password" name="senha" id="senha">
-        <label for="senha_conf">Confirme a senha:</label>
-        <input type="password" name="senha_conf" id="senha_conf">
-        <div id="botoes_form">
-            <input type="submit" value="Enviar">
-            <input type="reset" value="Limpar">
-        </div>
-    </form>
+    <main>
+        <form id="formulario-operacao">
+            <p>Operações Disponíveis</p>
+            <div id="botoes-operacao">
+                <button id="saque" type="button" class="operacao">SAQUE</button>
+                <button id="deposito" type="button" class="operacao">DEPÓSITO</button>
+                <button id="saldo" type="button" class="operacao">CONSULTA DE SALDO</button>
+            </div>
+            <label for="valor_op">Valor:  
+                <input type="number" name="valor_op" id="valor_op" placeholder="0,00">
+            </label>
+            <label for="conta_op">Conta:    
+                <input type="text" name="conta_op" id="conta_op" placeholder="9999">
+            </label>
+            <label for="senha_op">Senha: 
+                <input type="password" name="senha_op" id="senha_op">
+            </label>
+            <div id="botoes_form_op">
+                <input type="submit" value="Confirmar">
+                <input type="reset" value="Limpar">
+            </div>
+        </form>
+        <form id="formulario-cadastro">
+            <p>Formulário de Cadastro</p>
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome" placeholder="João da Silva">
+            <label for="cpf">CPF:</label>
+            <input type="text" name="cpf" id="cpf" placeholder="999.999.999.99">
+            <label for="celular">Celular:</label>
+            <input type="text" name="celular" id="celular" placeholder="(99) 99999-9999">
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" id="senha">
+            <label for="senha_conf">Confirme a senha:</label>
+            <input type="password" name="senha_conf" id="senha_conf">
+            <div id="botoes_form">
+                <input type="submit" value="Enviar">
+                <input type="reset" value="Limpar">
+            </div>
+        </form>
+    </main>
     <footer>
         <h3>
             Mais informações da DEVinBank:
