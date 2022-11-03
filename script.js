@@ -132,7 +132,7 @@ function valida_operacao(event) {
             operacao_deposito();
             break;
         case "saldo":
-            operacao_saldo();
+            operacao_saldo(dados_bancarios[indice].conta, indice);
             break;
     }
 }
@@ -145,8 +145,9 @@ function operacao_deposito() {
     console.log("Deposito")
 }
 
-function operacao_saldo() {
-    console.log("Saldo")
+function operacao_saldo(conta, indice) {
+    alert(`O saldo atual da conta ${conta} é de:
+R$ ${dados_bancarios[indice].saldo}`)
 }
 
 const formulario_cadastro = document.getElementById('formulario-cadastro');
