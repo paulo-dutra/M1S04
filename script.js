@@ -96,7 +96,7 @@ function valida_operacao(event) {
     }
     )
 
-    if (operacao_selecionada == ""){
+    if (operacao_selecionada == "") {
         return alert("Selecione uma operação!")
     }
 
@@ -108,7 +108,7 @@ function valida_operacao(event) {
     for (indice = 0; indice < dados_bancarios.length; indice++) {
         if (event.target.conta_op.value == dados_bancarios[indice].conta) {
             contaExiste = true
-            if(event.target.senha_op.value == dados_bancarios[indice].senha){
+            if (event.target.senha_op.value == dados_bancarios[indice].senha) {
                 senhaInvalida = false
             }
             break
@@ -124,15 +124,16 @@ function valida_operacao(event) {
     }
 
     //Chama a função correspondente à operação selecionada
+    let valor = Number(event.target.valor_op.value)
     switch (operacao_selecionada) {
         case "saque":
             operacao_saque();
             break;
         case "deposito":
-            operacao_deposito();
+            operacao_deposito(dados_bancarios[indice].conta, valor);
             break;
         case "saldo":
-            operacao_saldo(dados_bancarios[indice].conta, indice);
+            operacao_saldo(dados_bancarios[indice].conta);
             break;
     }
 }
@@ -141,13 +142,32 @@ function operacao_saque() {
     console.log("Saque")
 }
 
-function operacao_deposito() {
-    console.log("Deposito")
+function operacao_deposito(conta, valor) {
+    if (valor <= 0 || isNaN(valor)) {
+        return alert("O valor inserido não é válido")
+    }
+    let indice = indice_da_conta(conta)
+    let saldo_antigo = Number(dados_bancarios[indice].saldo)
+    dados_bancarios[indice].saldo = saldo_antigo + valor
+    alert(`Depósito na conta ${conta} efetuado com sucesso!
+Saldo anterior: R$ ${saldo_antigo}
+Saldo atual: R$ ${saldo_antigo + valor}`)
 }
 
-function operacao_saldo(conta, indice) {
+function operacao_saldo(conta) {
+    let indice = indice_da_conta(conta)
     alert(`O saldo atual da conta ${conta} é de:
 R$ ${dados_bancarios[indice].saldo}`)
+}
+
+function indice_da_conta(conta) {
+    let indice
+    dados_bancarios.forEach((objeto) => {
+        if (objeto.conta == conta) {
+            indice = dados_bancarios.indexOf(objeto)
+        }
+    })
+    return indice
 }
 
 const formulario_cadastro = document.getElementById('formulario-cadastro');
