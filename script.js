@@ -1,16 +1,16 @@
 let dados_bancarios = [
     {
         nome: "João da Silva",
-        cpf: 15458205626,
-        celular: "(31) 9198-8191",
+        cpf: 23458612066,
+        celular: "(11) 91188-7566",
         senha: "123654",
         conta: "9999",
-        saldo: 150,
+        saldo: 800,
     },
     {
         nome: "Cleber da Silva",
         cpf: 12345678900,
-        celular: "(31) 9198-8191",
+        celular: "(11) 91188-7566",
         senha: "654abc",
         conta: "1012",
         saldo: 1500,
@@ -127,7 +127,7 @@ function valida_operacao(event) {
     let valor = Number(event.target.valor_op.value)
     switch (operacao_selecionada) {
         case "saque":
-            operacao_saque();
+            operacao_saque(dados_bancarios[indice].conta, valor);
             break;
         case "deposito":
             operacao_deposito(dados_bancarios[indice].conta, valor);
@@ -138,8 +138,19 @@ function valida_operacao(event) {
     }
 }
 
-function operacao_saque() {
-    console.log("Saque")
+function operacao_saque(conta, valor) {
+    if (valor <= 0 || isNaN(valor)) {
+        return alert("O valor inserido não é válido")
+    }
+    let indice = indice_da_conta(conta)
+    let saldo_antigo = Number(dados_bancarios[indice].saldo)
+    if(saldo_antigo < valor){
+        return alert("O saque não pode ser efetuado pois não há saldo suficiente.")
+    }
+    dados_bancarios[indice].saldo = saldo_antigo - valor
+    alert(`Saque na conta ${conta} efetuado com sucesso!
+Saldo anterior: R$ ${saldo_antigo}
+Saldo atual: R$ ${saldo_antigo - valor}`)
 }
 
 function operacao_deposito(conta, valor) {
